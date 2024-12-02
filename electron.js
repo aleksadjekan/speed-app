@@ -8,8 +8,8 @@ app.whenReady().then(() => {
   app.dock.hide();
 
   const browserWindow = new BrowserWindow({
-    width: 200,
-    height: 150,
+    width: 120,
+    height: 120,
     show: false,
     frame: false,
     webPreferences: {
@@ -17,7 +17,8 @@ app.whenReady().then(() => {
       contextIsolation: false,
     },
   });
-  browserWindow.webContents.openDevTools();
+  // to enable devtool
+  // browserWindow.webContents.openDevTools();
 
   browserWindow.loadFile("dist/index.html");
 
@@ -35,6 +36,7 @@ app.whenReady().then(() => {
 });
 
 const sendSpeedUpdate = (window, value) => {
+  console.log("Sending message to renderer process:", value);
   window.webContents.send("speed-update", value);
 };
 

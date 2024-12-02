@@ -1,10 +1,15 @@
 <template>
   <div class="wrapper">
-    <p class="title">Internet Speed</p>
     <div v-if="isLoading" class="loader"></div>
     <div v-else class="speed-container">
-      <div class="speed-label">Download: {{ downlink }}</div>
-      <div class="speed-label">Upload: {{ uplink }}</div>
+      <div class="speed-label">
+        <p>Download:</p>
+        {{ downlink }}
+      </div>
+      <div class="speed-label">
+        <p>Upload:</p>
+        {{ uplink }}
+      </div>
     </div>
   </div>
 </template>
@@ -68,25 +73,28 @@ body {
 
 .wrapper {
   width: 100%;
-  height: 100%;
+  height: 100px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
-  flex-direction: column;
 
-  .title {
-    font-size: 20px;
+  .speed-label {
+    p {
+      margin: 0px !important;
+      font-weight: 700;
+      text-decoration: underline;
+    }
   }
 }
 
 .loader {
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid #3498db; /* Blue */
+  border: 3px solid #f3f3f3; /* Light grey */
+  border-top: 3px solid #3498db; /* Blue */
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   animation: spin 1s linear infinite;
 }
 
