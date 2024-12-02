@@ -17,6 +17,7 @@ app.whenReady().then(() => {
       contextIsolation: false,
     },
   });
+  browserWindow.webContents.openDevTools();
 
   browserWindow.loadFile("dist/index.html");
 
@@ -34,6 +35,7 @@ app.whenReady().then(() => {
 });
 
 const sendSpeedUpdate = (window, value) => {
+  console.log("Sending message to renderer process:", value);
   window.webContents.send("speed-update", value);
 };
 
@@ -84,6 +86,7 @@ const parseMessage = (message) => {
 
   console.log("Uplink capacity: ", uplinkData);
   console.log("Downlink capacity: ", downlinkData);
+
   return {
     uplink: uplinkData,
     downlink: downlinkData,
